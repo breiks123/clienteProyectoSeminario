@@ -2,6 +2,7 @@ import { StackActions } from "@react-navigation/routers";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { View } from "react-native";
+import { CLiente } from "../screens/ClientesCreacion/ClienteScreen";
 import { ClientesPotenciales } from "../screens/ClientsPotencial";
 import { ClientesRegulares } from "../screens/ClientsRegulares";
 import { ProductoDetail } from "../screens/ProductoDetailScreen";
@@ -25,7 +26,7 @@ export const ClientesNavigator = ()=>{
             
             <Stack.Screen name="ClientesScreen" component={ClientesRegulares} options={{title:'Cliente regular'}}/> 
             <Stack.Screen name="ClientePotencialScreen" component={ClientesPotenciales} options={{title:'CLIENTE POTENCIAL'}}/>
-            <Stack.Screen name="ClienteScreen" component={Producto} options={{title:"Nuevo Cliente"}}/>
+            <Stack.Screen name="ClienteScreen" component={CLiente} options={{title:"Nuevo Cliente"}}/>
             <Stack.Screen name="ClienteDetailScreen" component={ProductoDetail} options={{title:"Detalle Cliente"}}/>
         </Stack.Navigator>
     )

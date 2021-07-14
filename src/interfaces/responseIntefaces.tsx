@@ -70,7 +70,7 @@ export interface ClienteG{
     zona:string,
     calleNumero:string,
     tipoCliente:string,
-    probabilidadCaptacion:number,
-    estadoCliente:string,
-    claseCliente:boolean       
+    probabilidadCaptacion?:number,
+    estadoCliente?:string,
+    claseCliente?:boolean       
 }

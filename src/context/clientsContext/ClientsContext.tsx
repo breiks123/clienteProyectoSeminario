@@ -73,7 +73,7 @@ export const ClientesProvider = ({children}:any)=>{
     }
 
     const addCliente = async(  dataCliente:ClienteG,idVen:string ) => {
-        const respon = await apiCasaReal.post('/api/clientes',{
+        const respon = await apiCasaReal.post(`/api/clientes/${idVen}`,{
             nombre:dataCliente.nombre,
             apellidos:dataCliente.apellidos,
             email:dataCliente.email,
@@ -84,7 +84,7 @@ export const ClientesProvider = ({children}:any)=>{
             tipoCliente:dataCliente.tipoCliente,
             probabilidadCaptacion:dataCliente.probabilidadCaptacion,
             estadoCliente:'default',
-            claseCliente:true       
+            claseCliente:dataCliente.claseCliente
         });
         setClientes([...clientes,respon.data.serverResponse])
     }
