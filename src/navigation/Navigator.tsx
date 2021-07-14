@@ -33,7 +33,6 @@ export const Navigator=()=> {
             ?(
               <>
                 <Stack.Screen name="Clientes" component={MainTab} />
-                {console.log('el valor de user en navigation ',JSON.stringify(user))}
               </>
             )
             :

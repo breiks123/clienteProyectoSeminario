@@ -4,11 +4,15 @@ import { View,Text } from 'react-native';
 import { Navigator } from './src/navigation/Navigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './src/context/authContext/AuthContext';
+import { ProductsProvider } from './src/context/productsContext/ProductsContext';
 
 const AppState=({children}:any)=>{
   return(
     <AuthProvider>
-      {children}
+      <ProductsProvider>
+        {children}
+      </ProductsProvider>
+      
     </AuthProvider>
   )
 }

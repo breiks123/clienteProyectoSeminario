@@ -48,7 +48,7 @@ export const AuthProvider = ({children}:any)=>{
     }
     const singIn=async({email,password}:LoginRequest)=>{
         try {
-            const result = await apiCasaReal.post<loginResponse|any>('/login',{email,password});
+            const result = await apiCasaReal.post<loginResponse|any>('/api/login',{email,password});
             
             if(result.data.serverResponse!=='Credenciales incorrectas')
             {
