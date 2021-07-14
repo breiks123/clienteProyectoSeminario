@@ -36,3 +36,41 @@ export interface ProductoG{
     estado:boolean,
     categoria?:string,
 }
+
+//interfaces para clientes:
+
+
+export interface Cliente{
+    _id:string,
+    nombre:string,
+    apellidos:string,
+    email:string,
+    telefono:string,
+    ci:string,
+    zona:string,
+    calleNumero:string,
+    tipoCliente:string,
+    probabilidadCaptacion:number,
+    estadoCliente:string,
+    claseCliente:boolean,        
+    idVendedor:string,
+    pathavatar?:string,
+    uriavatar?:string
+}
+export interface ClientesResponse{
+    products:Array<Cliente>
+}
+//cliente para guardar
+export interface ClienteG{
+    nombre:string,
+    apellidos:string,
+    email:string,
+    telefono:string,
+    ci:string,
+    zona:string,
+    calleNumero:string,
+    tipoCliente:string,
+    probabilidadCaptacion:number,
+    estadoCliente:string,
+    claseCliente:boolean       
+}

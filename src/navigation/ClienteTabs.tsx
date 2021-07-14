@@ -1,10 +1,12 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { ClientRegular } from '../screens/ClientsRegulares';
+//import { ClientRegular } from '../screens/ClientsRegulares';
 import { AgendaReunion } from '../screens/AgendaReuniones';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MyColors from '../colors/MyColors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { ClientesNavigator } from './ClientesRegularesNavigation';
+import { ClientesPotencialesNavigator } from './ClientesPotencialesNavigation';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -49,8 +51,8 @@ export const ClienteTabs=()=> {
     )}
 
     >
-      <Tab.Screen name="Clientes Regulares" component={ClientRegular} />
-      <Tab.Screen name="Clientes Potenciales" component={ClientRegular} />
+      <Tab.Screen name="Clientes Regulares" component={ClientesNavigator} />
+      <Tab.Screen name="Clientes Potenciales" component={ClientesPotencialesNavigator} />
       <Tab.Screen name="Agenda Negociacion" component={AgendaReunion} />
     </Tab.Navigator>
   );

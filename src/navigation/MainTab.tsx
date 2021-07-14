@@ -67,7 +67,7 @@ export const MainTab=()=> {
       {
           (user!==null&&user!=='no data')
           ?(
-                (user.rol[0].name ==='amin')
+                (user.rol[0].name ==='admin')
                 ?(<>
                     <Tab.Screen name="Reportes" component={Reportes} />
                     <Tab.Screen name="Admin" component={AdminTab} />
