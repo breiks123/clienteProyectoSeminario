@@ -74,3 +74,7 @@ export interface ClienteG{
     estadoCliente?:string,
     claseCliente?:boolean       
 }
+
+
+
+//pedidos
