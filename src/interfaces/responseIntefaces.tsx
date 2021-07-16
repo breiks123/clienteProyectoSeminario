@@ -98,4 +98,29 @@ export interface ReunionG{
     fechaRegistro?:Date
 }
 
+//Pedidos
+export interface Pedido
+{
+    nombreCLiente?:string,
+    nombreVendedor?:string,
+    vendedorId?:string,
+    clienteId?:string,
+    fechaEntrega?:Date,
+    registerDate?:Date
+    estadoPedido?:boolean,//entregado- no entregado
+    pagoTotal:string,
+    uriRecibo?:string,
+    pathRecibo?:string,
+    metodoPago:string,//efectivo-cuenta bancaria
+    ordenarPedido?:boolean,//cuando se cancela el pedido
+    motivoCancelacion?:string,//tiene stock - no tiene efectivo - otro
+    productosPedido?:Array<itemPedido>
+}
+export interface itemPedido{
+            idProducto?:string,
+            nombreProduto?:string,
+            cantidad?:number,
+            costoUnitario?:number,
+            costoTotal?:string,
+}
 
