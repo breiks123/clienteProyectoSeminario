@@ -91,25 +91,6 @@ export const Producto=({navigation,route}:Props)=>{
                     onPress={save}
                     
                 ></Button>
-                <View style={styles.buttonContainerStyle}>
-                    <Button
-                        color={MyColors.buttonColor}
-                        title='Sacar Imagen'
-                        onPress={()=>{}}
-                        >
-
-                    </Button>
-                    <View style={styles.buttoStyle}/>
-                    <Button
-                    color={MyColors.buttonColor}
-                        title="Galeria"
-                        onPress={()=>{}}
-                    >
-
-                    </Button>
-                </View>
-                
-
             </ScrollView>
         </View>
     )

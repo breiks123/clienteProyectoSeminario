@@ -73,20 +73,29 @@ export const ClientesProvider = ({children}:any)=>{
     }
 
     const addCliente = async(  dataCliente:ClienteG,idVen:string ) => {
-        const respon = await apiCasaReal.post(`/api/clientes/${idVen}`,{
-            nombre:dataCliente.nombre,
-            apellidos:dataCliente.apellidos,
-            email:dataCliente.email,
-            telefono:dataCliente.telefono,
-            ci:dataCliente.ci,
-            zona:dataCliente.zona,
-            calleNumero:dataCliente.calleNumero,
-            tipoCliente:dataCliente.tipoCliente,
-            probabilidadCaptacion:dataCliente.probabilidadCaptacion,
-            estadoCliente:'default',
-            claseCliente:dataCliente.claseCliente
-        });
-        setClientes([...clientes,respon.data.serverResponse])
+        try {
+            const respon = await apiCasaReal.post(`/api/clientes/${idVen}`,{
+                nombre:dataCliente.nombre,
+                apellidos:dataCliente.apellidos,
+                email:dataCliente.email,
+                telefono:dataCliente.telefono,
+                ci:dataCliente.ci,
+                zona:dataCliente.zona,
+                calleNumero:dataCliente.calleNumero,
+                tipoCliente:dataCliente.tipoCliente,
+                probabilidadCaptacion:dataCliente.probabilidadCaptacion,
+                estadoCliente:'default',
+                claseCliente:dataCliente.claseCliente
+            });
+            if(dataCliente.claseCliente)
+                setClientes([...clientes,respon.data.serverResponse]);
+            else
+                setCLientesPotenciales([...clientesPotenciales,respon.data.serverResponse]);
+        } catch (error) {
+            console.log("error del servidor ",error);
+        }
+        
+        //console.log("este es la respuesta de servido :",respon.data.serverResponse)
     }
 
     //implementar para cliente:
@@ -113,9 +122,13 @@ export const ClientesProvider = ({children}:any)=>{
         const formData = new FormData();
         formData.append('image1',fileToUpload);
         //console.log("este es el end point::: ",`/api/uploadImagenProducto/${id}`)
-        const resp= await apiCasaReal.post(`/api/uploadImagenProducto/${id}`,formData);
-        //console.log('esta es la respuesta del sevidor :::',resp)
+        try {
+            await apiCasaReal.post(`/api/uploadImagenCliente/${id}`,formData);
+        } catch (error) {
+            console.log("error al subir la imagen", error)
+        }
         loadClientesRegulares();
+        loadClientesPotenciales();
     }
 
     return(

@@ -4,13 +4,8 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, Button,FlatList } from "react-native";
-//import {  } from "react-native-gesture-handler";
 import MyColors from "../colors/MyColors";
-import { ProductsContext } from "../context/productsContext/ProductsContext";
-import { ProductsStackParams } from "../navigation/ProductsNavigator";
 
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import { ClientesStackParams } from "../navigation/ClientesRegularesNavigation";
 import { ClientesContext } from "../context/clientsContext/ClientsContext";
 import { ClientesPotencialesStackParams } from "../navigation/ClientesPotencialesNavigation";
 
@@ -20,8 +15,6 @@ interface Props extends StackScreenProps<ClientesPotencialesStackParams,'Cliente
 export const ClientesPotenciales=({navigation}:Props)=>{
 
     const {clientesPotenciales}=useContext(ClientesContext);
-    
-   
     return(
         <View 
             style={{
@@ -46,10 +39,9 @@ export const ClientesPotenciales=({navigation}:Props)=>{
                         }
                         >
                         <View style={style.itemContainer}> 
-                            <Text style={style.itemText}>nombre: {item.nombre}</Text>
-                            <Text style={style.itemText}>Precio: {item.apellidos}</Text>
-                            <Text style={style.itemText}>En stok:  {item.email}</Text>
-                            { console.log('clientes potenciales', clientesPotenciales)}
+                            <Text style={style.itemText}>Nombres: {item.nombre}</Text>
+                            <Text style={style.itemText}>Apellidos: {item.apellidos}</Text>
+                            <Text style={style.itemText}>Email:  {item.email}</Text>
                         </View>
 
                     </TouchableOpacity>
@@ -74,7 +66,7 @@ export const ClientesPotenciales=({navigation}:Props)=>{
                                     
                                     color={MyColors.buttonColor}
                                     title='subir Imagen'
-                                    onPress={()=>navigation.navigate('ClientePotencialDetailScreen',{
+                                    onPress={()=>navigation.navigate('ClientePotencialImagen',{
                                         id:item._id,
                                         name:item.nombre
                                     })}
@@ -116,7 +108,8 @@ const style = StyleSheet.create({
         
     },
     itemText:{
-        fontSize:20
+        fontSize:17,
+        color:MyColors.buttonColor
     },
     itemSeparator:{
         borderBottomWidth:2,
@@ -141,6 +134,7 @@ const style = StyleSheet.create({
     {
         justifyContent:'center',
         alignContent:'center',
-        marginBottom:10
+        marginBottom:10,
+        marginTop:10
     }
 });

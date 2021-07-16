@@ -46,8 +46,8 @@ export const ClientesRegulares=({navigation}:Props)=>{
                         >
                         <View style={style.itemContainer}> 
                             <Text style={style.itemText}>nombre: {item.nombre}</Text>
-                            <Text style={style.itemText}>Precio: {item.apellidos}</Text>
-                            <Text style={style.itemText}>En stok:  {item.email}</Text>
+                            <Text style={style.itemText}>Apellidos: {item.apellidos}</Text>
+                            <Text style={style.itemText}>Correo electronico:  {item.email}</Text>
                             
                         </View>
 
@@ -73,7 +73,7 @@ export const ClientesRegulares=({navigation}:Props)=>{
                                     
                                     color={MyColors.buttonColor}
                                     title='subir Imagen'
-                                    onPress={()=>navigation.navigate('ClienteDetailScreen',{
+                                    onPress={()=>navigation.navigate('ClienteImagen',{
                                         id:item._id,
                                         name:item.nombre
                                     })}
@@ -115,7 +115,8 @@ const style = StyleSheet.create({
         
     },
     itemText:{
-        fontSize:20
+        fontSize:17,
+        color:MyColors.buttonColor
     },
     itemSeparator:{
         borderBottomWidth:2,
@@ -140,6 +141,7 @@ const style = StyleSheet.create({
     {
         justifyContent:'center',
         alignContent:'center',
-        marginBottom:10
+        marginBottom:10,
+        marginTop:10
     }
 });
