@@ -74,3 +74,26 @@ export interface ClienteG{
     estadoCliente?:string,
     claseCliente?:boolean       
 }
+
+
+//Reuniones 
+
+export interface Reunion{
+
+    clienteId?: string,
+    vendedorId?: string,
+    reunionFecha?:Date,
+    resultadoReunion?:boolean,
+    reunionRealizada?:boolean,
+    fechaRegistro?:Date
+}
+
+export interface ReunionG{
+
+    clienteId?: string,
+    vendedorId?: string,
+    reunionFecha?:Date,
+    resultadoReunion?:boolean,
+    reunionRealizada?:boolean,
+    fechaRegistro?:Date
+}

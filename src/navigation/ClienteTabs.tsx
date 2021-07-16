@@ -7,6 +7,7 @@ import MyColors from '../colors/MyColors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { ClientesNavigator } from './ClientesRegularesNavigation';
 import { ClientesPotencialesNavigator } from './ClientesPotencialesNavigation';
+import { ReunionesNavigator } from './ReunionesNavigator';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -53,7 +54,7 @@ export const ClienteTabs=()=> {
     >
       <Tab.Screen name="Clientes Regulares" component={ClientesNavigator} />
       <Tab.Screen name="Clientes Potenciales" component={ClientesPotencialesNavigator} />
-      <Tab.Screen name="Agenda Negociacion" component={AgendaReunion} />
+      <Tab.Screen name="Agenda Negociacion" component={ReunionesNavigator} />
     </Tab.Navigator>
   );
 } 

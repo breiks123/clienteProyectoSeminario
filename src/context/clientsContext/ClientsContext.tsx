@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { createContext } from "react";
 import { ImagePickerResponse } from "react-native-image-picker";
 import apiCasaReal from "../../api/casaRealApi";
-import { Cliente, ClienteG, Producto, ProductoG, ProductosResponse } from "../../interfaces/responseIntefaces";
+import { Cliente, ClienteG} from "../../interfaces/responseIntefaces";
 import { AuthContext } from "../authContext/AuthContext";
 
 
@@ -118,10 +118,8 @@ export const ClientesProvider = ({children}:any)=>{
             type:data.assets[0].type,
             name:data.assets[0].fileName,
         }
-        //console.log('este es el archivo para subir ',fileToUpload)
         const formData = new FormData();
         formData.append('image1',fileToUpload);
-        //console.log("este es el end point::: ",`/api/uploadImagenProducto/${id}`)
         try {
             await apiCasaReal.post(`/api/uploadImagenCliente/${id}`,formData);
         } catch (error) {
@@ -139,9 +137,6 @@ export const ClientesProvider = ({children}:any)=>{
             uploadImageCliente,
             loadClientesPotenciales,
             clientesPotenciales
-            
-
-
 
         }}
         >
