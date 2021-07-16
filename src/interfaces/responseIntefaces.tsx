@@ -76,5 +76,26 @@ export interface ClienteG{
 }
 
 
+//Reuniones 
 
-//pedidos
+export interface Reunion{
+
+    clienteId?: string,
+    vendedorId?: string,
+    reunionFecha?:Date,
+    resultadoReunion?:boolean,
+    reunionRealizada?:boolean,
+    fechaRegistro?:Date
+}
+
+export interface ReunionG{
+
+    clienteId?: string,
+    vendedorId?: string,
+    reunionFecha?:Date,
+    resultadoReunion?:boolean,
+    reunionRealizada?:boolean,
+    fechaRegistro?:Date
+}
+
+
