@@ -11,7 +11,7 @@ export const AdminTab=()=> {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Usuarios" component={Usuarios} />
-      <Tab.Screen name="ProductosN" component={ProductsNavigator} />
+      <Tab.Screen name="Productos" component={ProductsNavigator} />
       <Tab.Screen name="Mi perfil" component={Protected} />
     </Tab.Navigator>
   );

@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { createContext } from "react";
-import { ImagePickerResponse } from "react-native-image-picker";
+
 import apiCasaReal from "../../api/casaRealApi";
-import { itemPedido, Pedido, Producto, ProductoG, ProductosResponse } from "../../interfaces/responseIntefaces";
+import { itemPedido, Pedido } from "../../interfaces/responseIntefaces";
 
 
 type PedidosContextProps ={

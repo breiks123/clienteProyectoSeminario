@@ -6,13 +6,16 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider } from './src/context/authContext/AuthContext';
 import { ProductsProvider } from './src/context/productsContext/ProductsContext';
 import { ClientesProvider } from './src/context/clientsContext/ClientsContext';
+import { PedidosProvider } from './src/context/PedidosContext/PedidosContext';
 
 const AppState=({children}:any)=>{
   return(
     <AuthProvider>
       <ProductsProvider>
         <ClientesProvider>
-            {children}
+            <PedidosProvider>
+              {children}
+            </PedidosProvider>
         </ClientesProvider>
       </ProductsProvider>
       

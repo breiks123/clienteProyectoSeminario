@@ -10,6 +10,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/authContext/AuthContext';
 import { Protected } from '../screens/ProtectedScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { PedidosNavigator } from './PedidosNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -62,7 +63,7 @@ export const MainTab=()=> {
         
     >
       <Tab.Screen name="Clientes" component={ClienteTabs} />
-      <Tab.Screen name="Pedidos" component={Pedidos} />
+      <Tab.Screen name="Pedidos" component={PedidosNavigator} />
       
       {
           (user!==null&&user!=='no data')

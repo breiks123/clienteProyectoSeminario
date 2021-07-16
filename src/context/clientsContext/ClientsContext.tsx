@@ -13,6 +13,7 @@ type ClientesContextProps ={
     clientesPotenciales:Cliente[];
     loadClientesRegulares: () => Promise<void>;
     loadClientesPotenciales: () => Promise<void>;
+    loadAllClientes: () => Promise<void>;
     addCliente: ( dataProducto:ClienteG,idVen:string ) => Promise<void>;
    /*  updateCliente: ( productName: string, productId: string ) => Promise<void>;
     deleteCLiente: ( id: string ) => Promise<void>;
@@ -28,16 +29,34 @@ export const ClientesContext = createContext({}as ClientesContextProps);
 export const ClientesProvider = ({children}:any)=>{
     const [clientes, setClientes] = useState <Cliente[]>([]);
     const[clientesPotenciales,setCLientesPotenciales]=useState<Cliente[]>([]);
+    const[allClientesByVendedor,setAllClientes]=useState<Cliente[]>([]);
     const {user}=useContext(AuthContext);
 
     useEffect(()=>{
         loadClientesPotenciales();
         loadClientesRegulares();
+        loadAllClientes();
         //
     },[user]);
     /* useEffect(()=>{
         loadClientesPotenciales();
     },[user]); */
+    const loadAllClientes=async()=>{
+        if(user!==null&&user!=='no data')
+        {
+            if(user.rol[0].name ==='vendedor')
+            {
+                const respon = await apiCasaReal.get<any>(`/api/clientesVendedor/${user.id}`);
+                //console.log("este es del vendedor ",user.username," y este es su id ",user.id);
+                setClientes([...respon.data.serverResponse]);
+            }
+            else
+            {
+                const respon = await apiCasaReal.get<any>(`/api/clientes`);
+                setClientes([...respon.data.serverResponse]);
+            }
+        }
+    }
     const loadClientesRegulares = async() => {
         if(user!==null&&user!=='no data')
         {
@@ -136,7 +155,8 @@ export const ClientesProvider = ({children}:any)=>{
             loadClientesRegulares,
             uploadImageCliente,
             loadClientesPotenciales,
-            clientesPotenciales
+            clientesPotenciales,
+            loadAllClientes
 
         }}
         >

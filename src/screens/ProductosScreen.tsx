@@ -4,12 +4,10 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, Button,FlatList } from "react-native";
-//import {  } from "react-native-gesture-handler";
 import MyColors from "../colors/MyColors";
 import { ProductsContext } from "../context/productsContext/ProductsContext";
 import { ProductsStackParams } from "../navigation/ProductsNavigator";
 
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 
 

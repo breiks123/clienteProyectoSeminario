@@ -101,6 +101,7 @@ export interface ReunionG{
 //Pedidos
 export interface Pedido
 {
+    _id:string,
     nombreCLiente?:string,
     nombreVendedor?:string,
     vendedorId?:string,

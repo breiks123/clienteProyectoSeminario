@@ -1,21 +1,20 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import React from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, Button,FlatList } from "react-native";
-
-import MyColors from "../colors/MyColors";
-
-import { ClientesStackParams } from "../navigation/ClientesRegularesNavigation";
-import { ClientesContext } from "../context/clientsContext/ClientsContext";
+import MyColors from "../../colors/MyColors";
+import { ClientesContext } from "../../context/clientsContext/ClientsContext";
+import { PedidosStackParams } from "../../navigation/PedidosNavigator";
 
 
 
-interface Props extends StackScreenProps<ClientesStackParams,'ClientesScreen'>{};
-export const ClientesRegulares=({navigation}:Props)=>{
 
-    const {clientes}=useContext(ClientesContext);
-    
+interface Props extends StackScreenProps<PedidosStackParams,'PedidosScreen'>{};
+export const PedidosSelClienteScreen=({navigation}:Props)=>{
+
+    const {clientes,loadAllClientes}=useContext(ClientesContext);
     
     return(
         <View 
@@ -34,7 +33,7 @@ export const ClientesRegulares=({navigation}:Props)=>{
                     <TouchableOpacity
                         activeOpacity={0.8}
                         onPress={
-                            ()=>navigation.navigate('ClienteDetailScreen',{
+                            ()=>navigation.navigate('SeleccionProductosScreen',{
                                 id:item._id,
                                 name:item.nombre
                             })
@@ -43,7 +42,7 @@ export const ClientesRegulares=({navigation}:Props)=>{
                         <View style={style.itemContainer}> 
                             <Text style={style.itemText}>nombre: {item.nombre}</Text>
                             <Text style={style.itemText}>Apellidos: {item.apellidos}</Text>
-                            <Text style={style.itemText}>Correo electronico:  {item.email}</Text>
+                            <Text style={style.itemText}>Direccion:  {item.calleNumero}</Text>
                             
                         </View>
 
@@ -63,19 +62,8 @@ export const ClientesRegulares=({navigation}:Props)=>{
 
                                 
                             )
-                            :
-                            (
-                                <Button
-                                    
-                                    color={MyColors.buttonColor}
-                                    title='subir Imagen'
-                                    onPress={()=>navigation.navigate('ClienteImagen',{
-                                        id:item._id,
-                                        name:item.nombre
-                                    })}
-                                    >
-
-                                </Button>
+                            :(
+                                console.log("test")
                             )
                             
                         }
@@ -88,17 +76,6 @@ export const ClientesRegulares=({navigation}:Props)=>{
                     <View style={style.itemSeparator}/> 
                 )}
             />
-            <View style={style.buttonCreate}> 
-                    <Button
-                        color={MyColors.buttonColor}
-                        
-                        title='Nuevo Cliente'
-                        onPress={()=>{navigation.navigate('ClienteScreen',{})}}
-                    />
-                        
-                    
-            </View>
-            
 
         </View>
        
@@ -111,8 +88,7 @@ const style = StyleSheet.create({
         
     },
     itemText:{
-        fontSize:17,
-        color:MyColors.buttonColor
+        fontSize:20
     },
     itemSeparator:{
         borderBottomWidth:2,
@@ -128,16 +104,5 @@ const style = StyleSheet.create({
         flexDirection:'row',
         //justifyContent:'space-between',
         alignItems:'stretch'
-    },
-    newItemButton:{
-        color:MyColors.buttonColor,
-        fontSize:30
-    },
-    buttonCreate:
-    {
-        justifyContent:'center',
-        alignContent:'center',
-        marginBottom:10,
-        marginTop:10
     }
 });

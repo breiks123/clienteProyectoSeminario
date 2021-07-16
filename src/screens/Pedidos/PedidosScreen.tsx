@@ -4,17 +4,17 @@ import { useContext } from "react";
 import { Image, StyleSheet, TouchableOpacity } from "react-native";
 import { View, Text, Button,FlatList } from "react-native";
 
-import MyColors from "../colors/MyColors";
+import MyColors from "../../colors/MyColors";
 
-import { ClientesStackParams } from "../navigation/ClientesRegularesNavigation";
-import { ClientesContext } from "../context/clientsContext/ClientsContext";
+import { PedidosStackParams } from "../../navigation/PedidosNavigator";
+import { PedidosContext } from "../../context/PedidosContext/PedidosContext";
 
 
 
-interface Props extends StackScreenProps<ClientesStackParams,'ClientesScreen'>{};
-export const ClientesRegulares=({navigation}:Props)=>{
+interface Props extends StackScreenProps<PedidosStackParams,'PedidosScreen'>{};
+export const PedidosScreen=({navigation}:Props)=>{
 
-    const {clientes}=useContext(ClientesContext);
+    const {pedidos}=useContext(PedidosContext);
     
     
     return(
@@ -25,7 +25,7 @@ export const ClientesRegulares=({navigation}:Props)=>{
             }}
         >
             <FlatList 
-                data={clientes}
+                data={pedidos}
                 //keyExtractor={(p)=>p._id}
                 keyExtractor={(item) => item._id}
                 renderItem={({item})=>(
@@ -34,53 +34,24 @@ export const ClientesRegulares=({navigation}:Props)=>{
                     <TouchableOpacity
                         activeOpacity={0.8}
                         onPress={
-                            ()=>navigation.navigate('ClienteDetailScreen',{
+                            ()=>navigation.navigate('PedidoDetalleScreen',{
                                 id:item._id,
-                                name:item.nombre
+                                name:item.nombreCLiente
                             })
                         }
                         >
                         <View style={style.itemContainer}> 
-                            <Text style={style.itemText}>nombre: {item.nombre}</Text>
-                            <Text style={style.itemText}>Apellidos: {item.apellidos}</Text>
-                            <Text style={style.itemText}>Correo electronico:  {item.email}</Text>
+                            <Text style={style.itemText}>nombre cliente: {item.nombreCLiente}</Text>
+                            <Text style={style.itemText}>fecha de entrega: {item.fechaEntrega}</Text>
+                            <Text style={style.itemText}>Pago total:  {item.pagoTotal}</Text>
                             
                         </View>
 
                     </TouchableOpacity>
-                    <View style={style.imageSeparator}></View>
-                        {
-                            
-                            (item.uriavatar != undefined)
-                            ?(
-                                <Image
-                                source={{uri:('http://192.168.0.20:8000'+item.uriavatar)}}
-                                style={{
-                                    width:90,
-                                    height:80
-                                }}
-                                />
-
-                                
-                            )
-                            :
-                            (
-                                <Button
-                                    
-                                    color={MyColors.buttonColor}
-                                    title='subir Imagen'
-                                    onPress={()=>navigation.navigate('ClienteImagen',{
-                                        id:item._id,
-                                        name:item.nombre
-                                    })}
-                                    >
-
-                                </Button>
-                            )
-                            
-                        }
+                 
                         
-                        </View>
+                        
+                </View>
                     </>
                 )
                 }
@@ -92,8 +63,8 @@ export const ClientesRegulares=({navigation}:Props)=>{
                     <Button
                         color={MyColors.buttonColor}
                         
-                        title='Nuevo Cliente'
-                        onPress={()=>{navigation.navigate('ClienteScreen',{})}}
+                        title='Nuevo Pedido'
+                        onPress={()=>{navigation.navigate('PedidoSelClienteScreen',{})}}
                     />
                         
                     
@@ -107,7 +78,7 @@ export const ClientesRegulares=({navigation}:Props)=>{
 const style = StyleSheet.create({
     itemContainer:{
         backgroundColor:MyColors.backGroundColor,
-        width:280
+        width:500
         
     },
     itemText:{
