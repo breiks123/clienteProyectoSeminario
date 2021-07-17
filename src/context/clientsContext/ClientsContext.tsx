@@ -48,12 +48,12 @@ export const ClientesProvider = ({children}:any)=>{
             {
                 const respon = await apiCasaReal.get<any>(`/api/clientesVendedor/${user.id}`);
                 //console.log("este es del vendedor ",user.username," y este es su id ",user.id);
-                setClientes([...respon.data.serverResponse]);
+                setAllClientes([...respon.data.serverResponse]);
             }
             else
             {
                 const respon = await apiCasaReal.get<any>(`/api/clientes`);
-                setClientes([...respon.data.serverResponse]);
+                setAllClientes([...respon.data.serverResponse]);
             }
         }
     }
@@ -113,6 +113,8 @@ export const ClientesProvider = ({children}:any)=>{
         } catch (error) {
             console.log("error del servidor ",error);
         }
+        loadClientesRegulares();
+        loadClientesPotenciales();
         
         //console.log("este es la respuesta de servido :",respon.data.serverResponse)
     }
